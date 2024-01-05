@@ -146,7 +146,6 @@ public abstract class MinimalRepository<TEntity, TKey, TDbContext> : IMinimalRep
 
         switch (id)
         {
-
             case int intId:
                 return await _dbContext.Set<TEntity>().FindAsync(intId);
             case string stringId:
