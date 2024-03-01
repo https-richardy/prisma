@@ -30,16 +30,9 @@ public interface IMinimalRepository<TEntity>
     /// <summary>
     /// Asynchronously retrieves an entity from the repository by its integer identifier.
     /// </summary>
-    /// <param name="id">The integer identifier of the entity.</param>
+    /// <param name="id">The identifier of the entity.</param>
     /// <returns>A task representing the asynchronous retrieval operation, returning the retrieved entity.</returns>
-    Task<TEntity> RetrieveByIdAsync(int id);
-
-    /// <summary>
-    /// Asynchronously retrieves an entity from the repository by its string identifier.
-    /// </summary>
-    /// <param name="id">The string identifier of the entity.</param>
-    /// <returns>A task representing the asynchronous retrieval operation, returning the retrieved entity.</returns>
-    Task<TEntity> RetrieveByIdAsync(string id);
+    Task<TEntity> RetrieveByIdAsync(object id);
 
     /// <summary>
     /// Asynchronously retrieves all entities from the repository.
