@@ -2,6 +2,13 @@
 
 global using Kyon.Dolphin.Core.Models;
 
-#endregion
+# endregion
+
+# region ---- Microsoft global usings ----
+
+global using Microsoft.EntityFrameworkCore;
+
+# endregion
+
 
 global using Xunit;
