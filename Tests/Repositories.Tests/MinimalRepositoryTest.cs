@@ -143,4 +143,13 @@ public class MinimalRepositoryTest : IAsyncLifetime
         Assert.NotNull(resultEntity);
         Assert.Equal(existingEntity.Id, resultEntity.Id);
     }
+
+    [Fact]
+    public async Task RetrieveByIdAsync_ShouldReturnNullWhenIdDoesNotExist()
+    {
+        var nonExistingId = _fixture.Create<int>();
+        var resultEntity = await _repository.RetrieveByIdAsync(nonExistingId);
+
+        Assert.Null(resultEntity);
+    }
 }
