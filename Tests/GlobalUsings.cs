@@ -2,6 +2,7 @@
 
 global using Kyon.Dolphin.Core.Models;
 global using Kyon.Dolphin.Tests;
+global using Kyon.Dolphin.Core.Data.Repositories;
 
 # endregion
 
