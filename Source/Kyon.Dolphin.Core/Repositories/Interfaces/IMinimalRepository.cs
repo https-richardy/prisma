@@ -1,3 +1,6 @@
+// Kyon - Open Source Initiative
+// Licensed under the MIT License
+
 using Kyon.Dolphin.Core.Common;
 
 namespace Kyon.Dolphin.Core.Data.Repositories;
