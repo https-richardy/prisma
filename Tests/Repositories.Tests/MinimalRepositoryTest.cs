@@ -103,4 +103,13 @@ public class MinimalRepositoryTest : IAsyncLifetime
         Assert.Equal(OperationResult.Success, result);
         Assert.DoesNotContain(existingEntity, _dbContext.Foos);
     }
+
+    [Fact]
+    public async Task DeleteAsync_ShouldReturnFailedIfEntityDoesNotExist()
+    {
+        var nonExistingEntity = _fixture.Create<Foo>();
+        var result = await _repository.DeleteAsync(nonExistingEntity);
+
+        Assert.Equal(OperationResult.Failed, result);
+    }
 }
