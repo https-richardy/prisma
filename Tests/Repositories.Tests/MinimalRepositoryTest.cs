@@ -40,4 +40,25 @@ public class MinimalRepositoryTest : IAsyncLifetime
         Assert.Equal(OperationResult.Success, result);
         Assert.Contains(newEntity, _dbContext.Foos);
     }
+
+    [Fact]
+    public async Task SaveAsync_ShouldReturnFailedOnException()
+    {
+        var newEntity = _fixture.Create<Foo>();
+
+        _dbContext.Foos.AddRange(newEntity);
+        await _dbContext.SaveChangesAsync();
+
+        var mockSet = new Mock<DbSet<Foo>>();
+        _dbContext.Foos = mockSet.Object;
+        var repositoryWithMock = new FooRepository(_dbContext);
+
+        mockSet.Setup(m => m.AddAsync(It.IsAny<Foo>(), It.IsAny<CancellationToken>()))
+               .Throws(new Exception("Simulated exception"));
+
+
+        var result = await repositoryWithMock.SaveAsync(newEntity);
+
+        Assert.Equal(OperationResult.Failed, result);
+    }
 }
