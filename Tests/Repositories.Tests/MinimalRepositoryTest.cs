@@ -1,8 +1,6 @@
 // Kyon - Open Source Initiative
 // Licensed under the MIT License
 
-using AutoFixture;
-
 public class MinimalRepositoryTest : IAsyncLifetime
 {
     private readonly TestDbContext _dbContext;
@@ -31,5 +29,15 @@ public class MinimalRepositoryTest : IAsyncLifetime
     {
         await _dbContext.Database.EnsureDeletedAsync();
         _dbContext.Dispose();
+    }
+
+    [Fact]
+    public async Task SaveAsync_ShouldAddEntityAndReturnSuccess()
+    {
+        var newEntity = _fixture.Create<Foo>();
+        var result = await _repository.SaveAsync(newEntity);
+
+        Assert.Equal(OperationResult.Success, result);
+        Assert.Contains(newEntity, _dbContext.Foos);
     }
 }
