@@ -6,7 +6,7 @@ namespace Kyon.Dolphin.Tests;
 /// <summary>
 /// Represents a sample entity for testing purposes.
 /// </summary>
-internal class Foo : Model<int>
+public class Foo : Model<int>
 {
     public string Name { get; set; } = string.Empty;
     public int Age { get; set; }
