@@ -61,4 +61,23 @@ public class MinimalRepositoryTest : IAsyncLifetime
 
         Assert.Equal(OperationResult.Failed, result);
     }
+
+    [Fact]
+    public async Task UpdateAsync_ShouldUpdateExistingEntityAndReturnSuccess()
+    {
+        var existingEntity = _fixture.Create<Foo>();
+
+        _dbContext.Foos.Add(existingEntity);
+        await _dbContext.SaveChangesAsync();
+
+        existingEntity.Name = "John Doe";
+        var result = await _repository.UpdateAsync(existingEntity);
+
+        Assert.Equal(OperationResult.Success, result);
+
+        var updatedEntity = _dbContext.Foos.Single();
+
+        Assert.Equal(existingEntity.Id, updatedEntity.Id);
+        Assert.Equal("John Doe", updatedEntity.Name);
+    }
 }
