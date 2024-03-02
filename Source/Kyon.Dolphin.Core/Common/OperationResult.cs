@@ -1,3 +1,6 @@
+// Kyon - Open Source Initiative
+// Licensed under the MIT License
+
 namespace Kyon.Dolphin.Core.Common;
 
 /// <summary>
