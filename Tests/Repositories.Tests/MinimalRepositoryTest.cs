@@ -152,4 +152,12 @@ public class MinimalRepositoryTest : IAsyncLifetime
 
         Assert.Null(resultEntity);
     }
+
+    [Fact]
+    public async Task RetrieveByIdAsync_ShouldThrowArgumentExceptionForUnsupportedKeyType()
+    {
+        var invalidId = _fixture.Create<Guid>();
+
+        await Assert.ThrowsAsync<ArgumentException>(() => _repository.RetrieveByIdAsync(invalidId));
+    }
 }
