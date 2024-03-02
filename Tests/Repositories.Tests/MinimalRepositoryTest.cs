@@ -129,4 +129,18 @@ public class MinimalRepositoryTest : IAsyncLifetime
             Assert.Contains(entity, resultEntities);
         }
     }
+
+    [Fact]
+    public async Task RetrieveByIdAsync_ShouldReturnEntityWhenIdExists()
+    {
+        var existingEntity = _fixture.Create<Foo>();
+
+        _dbContext.Foos.Add(existingEntity);
+        await _dbContext.SaveChangesAsync();
+
+        var resultEntity = await _repository.RetrieveByIdAsync(existingEntity.Id);
+
+        Assert.NotNull(resultEntity);
+        Assert.Equal(existingEntity.Id, resultEntity.Id);
+    }
 }
