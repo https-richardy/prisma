@@ -1,6 +1,7 @@
 # region ---- Project global usings ----
 
 global using Kyon.Dolphin.Core.Models;
+global using Kyon.Dolphin.Tests;
 
 # endregion
 
