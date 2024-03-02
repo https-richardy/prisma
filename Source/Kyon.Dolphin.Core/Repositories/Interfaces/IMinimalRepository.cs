@@ -1,3 +1,5 @@
+using Kyon.Dolphin.Core.Common;
+
 namespace Kyon.Dolphin.Core.Data.Repositories;
 
 /// <summary>
@@ -10,22 +12,22 @@ public interface IMinimalRepository<TEntity>
     /// Asynchronously saves a new entity to the repository.
     /// </summary>
     /// <param name="entity">The entity to be saved.</param>
-    /// <returns>A task representing the asynchronous save operation.</returns>
-    Task SaveAsync(TEntity entity);
+    /// <returns>A task representing the asynchronous save operation. The result is an <see cref="OperationResult"/> indicating success or failure.</returns>
+    Task<OperationResult> SaveAsync(TEntity entity);
 
     /// <summary>
     /// Asynchronously deletes an existing entity from the repository.
     /// </summary>
     /// <param name="entity">The entity to be deleted.</param>
-    /// <returns>A task representing the asynchronous delete operation.</returns>
-    Task DeleteAsync(TEntity entity);
+    /// <returns>A task representing the asynchronous delete operation. The result is an <see cref="OperationResult"/> indicating success or failure.</returns>
+    Task<OperationResult> DeleteAsync(TEntity entity);
 
     /// <summary>
     /// Asynchronously updates an existing entity in the repository.
     /// </summary>
     /// <param name="entity">The entity to be updated.</param>
-    /// <returns>A task representing the asynchronous update operation.</returns>
-    Task UpdateAsync(TEntity entity);
+    /// <returns>A task representing the asynchronous update operation. The result is an <see cref="OperationResult"/> indicating success or failure.</returns>
+    Task<OperationResult> UpdateAsync(TEntity entity);
 
     /// <summary>
     /// Asynchronously retrieves an entity from the repository by its integer identifier.
