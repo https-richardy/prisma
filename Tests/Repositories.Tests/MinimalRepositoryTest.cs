@@ -112,4 +112,21 @@ public class MinimalRepositoryTest : IAsyncLifetime
 
         Assert.Equal(OperationResult.Failed, result);
     }
+
+    [Fact]
+    public async Task RetrieveAllAsync_ShouldReturnAllEntitiesInContext()
+    {
+        var entities = _fixture.CreateMany<Foo>(3).ToList();
+
+        _dbContext.Foos.AddRange(entities);
+        await _dbContext.SaveChangesAsync();
+
+        var resultEntities = await _repository.RetrieveAllAsync();
+
+        Assert.Equal(entities.Count(), resultEntities.Count());
+        foreach (var entity in entities)
+        {
+            Assert.Contains(entity, resultEntities);
+        }
+    }
 }
