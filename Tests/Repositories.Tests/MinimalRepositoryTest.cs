@@ -153,11 +153,18 @@ public class MinimalRepositoryTest : IAsyncLifetime
         Assert.Null(resultEntity);
     }
 
-    [Fact]
-    public async Task RetrieveByIdAsync_ShouldThrowArgumentExceptionForUnsupportedKeyType()
+    [Theory]
+    [InlineData(typeof(Guid))]
+    [InlineData(typeof(decimal))]
+    [InlineData(typeof(object))]
+    [InlineData(typeof(DateTime))]
+    [InlineData(typeof(TimeSpan))]
+    # pragma warning disable CS8604
+    public async Task RetrieveByIdAsync_ShouldThrowArgumentExceptionForUnsupportedKeyTypes(Type invalidKeyType)
     {
-        var invalidId = _fixture.Create<Guid>();
+        var invalidId = Activator.CreateInstance(invalidKeyType);
 
         await Assert.ThrowsAsync<ArgumentException>(() => _repository.RetrieveByIdAsync(invalidId));
     }
+    # pragma warning restore CS8604
 }
