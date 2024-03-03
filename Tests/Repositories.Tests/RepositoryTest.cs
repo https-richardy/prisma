@@ -128,8 +128,13 @@ public class RepositoryTest : IAsyncLifetime
     [Fact]
     public async Task FindSingleAsync_ShouldReturnNullForNonMatchingPredicate()
     {
-        var entity1 = _fixture.Build<Foo>().With(e => e.Age, 20).Create();
-        var entity2 = _fixture.Build<Foo>().With(e => e.Age, 30).Create();
+        var entity1 = _fixture.Build<Foo>()
+            .With(e => e.Age, 20)
+            .Create();
+
+        var entity2 = _fixture.Build<Foo>()
+            .With(e => e.Age, 30)
+            .Create();
 
         _dbContext.Foos.AddRange(entity1, entity2);
         await _dbContext.SaveChangesAsync();
