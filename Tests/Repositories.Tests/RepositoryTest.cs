@@ -36,8 +36,7 @@ public class RepositoryTest : IAsyncLifetime
     [Fact]
     public async Task CountAsync_ShouldReturnZeroWhenNoEntitiesExist()
     {
-        var repository = new FooRepository(_dbContext);
-        var result = await repository.CountAsync();
+        var result = await _repository.CountAsync();
 
         Assert.Equal(0, result);
     }
@@ -45,7 +44,6 @@ public class RepositoryTest : IAsyncLifetime
     [Fact]
     public async Task CountAsync_WithPredicate_ShouldReturnCorrectCount()
     {
-        var repository = new FooRepository(_dbContext);
         var entitiesToAdd = _fixture.CreateMany<Foo>(3);
 
         _dbContext.Foos.AddRange(entitiesToAdd);
@@ -53,8 +51,29 @@ public class RepositoryTest : IAsyncLifetime
 
         Expression<Func<Foo, bool>> predicate = x => true;
 
-        var result = await repository.CountAsync(predicate);
+        var result = await _repository.CountAsync(predicate);
 
         Assert.Equal(entitiesToAdd.Count(), result);
+    }
+
+    [Fact]
+    public async Task ExistsAsync_ShouldReturnTrueForExistingId()
+    {
+        var entityToAdd = _fixture.Create<Foo>();
+        _dbContext.Foos.Add(entityToAdd);
+
+        await _dbContext.SaveChangesAsync();
+
+        var result = await _repository.ExistsAsync(entityToAdd.Id);
+        Assert.True(result);
+    }
+
+    [Fact]
+    public async Task ExistsAsync_ShouldReturnFalseForNonExistingId()
+    {
+        const int nonExistingId = 999999;
+        var result = await _repository.ExistsAsync(nonExistingId);
+
+        Assert.False(result);
     }
 }
