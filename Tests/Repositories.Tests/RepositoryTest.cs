@@ -76,4 +76,31 @@ public class RepositoryTest : IAsyncLifetime
 
         Assert.False(result);
     }
+
+    [Fact]
+    public async Task FindAllAsync_ShouldReturnCorrectCollectionForMatchingPredicate()
+    {
+        var entity1 = _fixture.Build<Foo>()
+            .With(e => e.Age, 20)
+            .Create();
+
+        var entity2 = _fixture.Build<Foo>()
+            .With(e => e.Age, 30)
+            .Create();
+
+        var entity3 = _fixture.Build<Foo>()
+            .With(e => e.Age, 35)
+            .Create();
+
+        _dbContext.Foos.AddRange(entity1, entity2, entity3);
+        await _dbContext.SaveChangesAsync();
+
+        Expression<Func<Foo, bool>> predicate = e => e.Age > 25;
+
+        var result = await _repository.FindAllAsync(predicate);
+
+        Assert.Equal(2, result.Count());
+        Assert.Contains(entity2, result);
+        Assert.Contains(entity3, result);
+    }
 }
