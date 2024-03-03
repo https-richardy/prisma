@@ -1,3 +1,9 @@
+# region ---- System global usings ----
+
+global using System.Linq.Expressions;
+
+# endregion
+
 # region ---- Project global usings ----
 
 global using Kyon.Dolphin.Core.Models;
