@@ -103,4 +103,40 @@ public class RepositoryTest : IAsyncLifetime
         Assert.Contains(entity2, result);
         Assert.Contains(entity3, result);
     }
+
+    [Fact]
+    public async Task FindSingleAsync_ShouldReturnCorrectEntityForMatchingPredicate()
+    {
+        var entity1 = _fixture.Build<Foo>()
+            .With(e => e.Age, 20)
+            .Create();
+
+        var entity2 = _fixture.Build<Foo>()
+            .With(e => e.Age, 30)
+            .Create();
+
+        _dbContext.Foos.AddRange(entity1, entity2);
+        await _dbContext.SaveChangesAsync();
+
+        Expression<Func<Foo, bool>> predicate = e => e.Age == 30;
+        var result = await _repository.FindSingleAsync(predicate);
+
+        Assert.NotNull(result);
+        Assert.Equal(entity2, result);
+    }
+
+    [Fact]
+    public async Task FindSingleAsync_ShouldReturnNullForNonMatchingPredicate()
+    {
+        var entity1 = _fixture.Build<Foo>().With(e => e.Age, 20).Create();
+        var entity2 = _fixture.Build<Foo>().With(e => e.Age, 30).Create();
+
+        _dbContext.Foos.AddRange(entity1, entity2);
+        await _dbContext.SaveChangesAsync();
+
+        Expression<Func<Foo, bool>> nonMatchingPredicate = e => e.Age == 25;
+        var result = await _repository.FindSingleAsync(nonMatchingPredicate);
+
+        Assert.Null(result);
+    }
 }
