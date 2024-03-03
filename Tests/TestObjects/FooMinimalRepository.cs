@@ -10,8 +10,8 @@ namespace Kyon.Dolphin.Tests;
 /// This repository is implemented based on the <see cref="MinimalRepository{TEntity, Tkey, TDbContext}"/>
 /// and <see cref="IMinimalRepository{TEntity}"/> interfaces.
 /// </remarks>
-public class FooRepository : MinimalRepository<Foo, int, TestDbContext>, IMinimalRepository<Foo>
+public class FooMinimalRepository : MinimalRepository<Foo, int, TestDbContext>, IMinimalRepository<Foo>
 {
-    public FooRepository(TestDbContext dbContext)
+    public FooMinimalRepository(TestDbContext dbContext)
         : base(dbContext) {  }
 }
