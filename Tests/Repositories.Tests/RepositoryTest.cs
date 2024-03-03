@@ -139,4 +139,27 @@ public class RepositoryTest : IAsyncLifetime
 
         Assert.Null(result);
     }
+
+    [Fact]
+    public async Task PagedAsync_ShouldReturnCorrectPagedCollection()
+    {
+        var entities = _fixture.Build<Foo>()
+            .With(e => e.Age, 25)
+            .CreateMany(10);
+
+        _dbContext.Foos.AddRange(entities);
+        await _dbContext.SaveChangesAsync();
+
+        int pageNumber = 2;
+        int pageSize = 3;
+
+        var result = await _repository.PagedAsync(pageNumber, pageSize);
+
+        Assert.Equal(pageSize, result.Count());
+
+        int expectedStartIndex = (pageNumber - 1) * pageSize;
+
+        var expectedEntities = entities.Skip(expectedStartIndex).Take(pageSize);
+        Assert.Equal(expectedEntities, result);
+    }
 }
