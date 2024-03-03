@@ -14,7 +14,7 @@ public class MinimalRepositoryTest : IAsyncLifetime
             .Options;
 
         _dbContext = new TestDbContext(options);
-        _repository = new FooRepository(_dbContext);
+        _repository = new FooMinimalRepository(_dbContext);
 
         _fixture = new Fixture();
         _fixture.Behaviors.Add(new OmitOnRecursionBehavior());
@@ -51,7 +51,7 @@ public class MinimalRepositoryTest : IAsyncLifetime
 
         var mockSet = new Mock<DbSet<Foo>>();
         _dbContext.Foos = mockSet.Object;
-        var repositoryWithMock = new FooRepository(_dbContext);
+        var repositoryWithMock = new FooMinimalRepository(_dbContext);
 
         mockSet.Setup(m => m.AddAsync(It.IsAny<Foo>(), It.IsAny<CancellationToken>()))
                .Throws(new Exception("Simulated exception"));
