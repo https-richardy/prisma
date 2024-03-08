@@ -12,6 +12,7 @@ global using Kyon.Dolphin.Core.Data.Repositories;
 global using Kyon.Dolphin.Core.Common;
 global using Kyon.Dolphin.Security;
 global using Microsoft.Extensions.Configuration;
+global using System.Security.Claims;
 
 # endregion
 
