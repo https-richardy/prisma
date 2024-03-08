@@ -44,6 +44,18 @@ public class JwtServiceTest
     }
 
     [Fact]
+    public void JwtOptions_CustomExpiresDays_ShouldSetCorrectly()
+    {
+        var customExpires = DateTime.UtcNow.AddDays(15);
+        var options = new JwtOptions { Expires = customExpires };
+
+        var jwtService = new JwtService(_configuration.Object, options);
+        var actualOptions = GetOptions(jwtService);
+
+        Assert.Equal(customExpires, actualOptions.Expires);
+    }
+
+    [Fact]
     public void Constructor_CustomOptions_ShouldInitializeOptionsCorrectly()
     {
         var customOptions = new JwtOptions
