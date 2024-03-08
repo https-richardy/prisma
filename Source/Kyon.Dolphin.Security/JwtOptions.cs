@@ -38,7 +38,7 @@ public record JwtOptions
     public DateTime Expires { get; set; } = DateTime.UtcNow.AddDays(10);
 
     /// <summary>
-    /// Gets the <see cref="SymetricSecurityKey"/> created from the <see cref="Key"/>
+    /// Gets the <see cref="JwtOptions.SymmetricSecurityKey"/> created from the <see cref="Key"/>
     /// </summary>
     public SymmetricSecurityKey SymmetricSecurityKey => new SymmetricSecurityKey(Key);
 
