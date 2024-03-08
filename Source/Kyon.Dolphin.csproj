@@ -4,6 +4,17 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+
+    <PackageId>Kyon.Dolphin</PackageId>
+    <Version>1.0.0-alpha1</Version>
+    <Authors>Kyon</Authors>
+    <Company>Kyon</Company>
+    <RepositoryUrl>https://github.com/kyon-slns/dolphin</RepositoryUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Title>Dolphin</Title>
+    <Description>
+      Dolphin is your .NET companion for developing web APIs. Crafted with simplicity in mind, this library provides common functionality to speed up your development process.
+    </Description>
   </PropertyGroup>
 
   <ItemGroup>
