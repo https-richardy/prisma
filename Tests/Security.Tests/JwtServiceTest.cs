@@ -32,6 +32,18 @@ public class JwtServiceTest
     }
 
     [Fact]
+    public void JwtOptions_CustomSecurityAlgorithm_ShouldSetCorrectly()
+    {
+        var customSecurityAlgorithm = SecurityAlgorithms.Sha512;
+        var options = new JwtOptions { SecurityAlgorithm = customSecurityAlgorithm };
+
+        var jwtService = new JwtService(_configuration.Object, options);
+        var actualOptions = GetOptions(jwtService);
+
+        Assert.Equal(customSecurityAlgorithm, actualOptions.SecurityAlgorithm);
+    }
+
+    [Fact]
     public void Constructor_CustomOptions_ShouldInitializeOptionsCorrectly()
     {
         var customOptions = new JwtOptions
