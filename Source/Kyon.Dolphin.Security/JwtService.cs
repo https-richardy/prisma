@@ -45,6 +45,7 @@ public class JwtService : IJwtService
     /// a <see cref="JwtOptions"/> object with custom settings. If the options do not
     /// include a key, it will be automatically set using the secret key from the configuration (appsettings.json).
     /// </remarks>
+
     public JwtService(IConfiguration configuration, JwtOptions options)
     : this(configuration)
     {
