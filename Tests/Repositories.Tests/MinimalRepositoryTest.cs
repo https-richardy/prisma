@@ -1,6 +1,8 @@
 // Kyon - Open Source Initiative
 // Licensed under the MIT License
 
+namespace Kyon.Dolphin.Tests.Repositories;
+
 public class MinimalRepositoryTest : IAsyncLifetime
 {
     private readonly TestDbContext _dbContext;
