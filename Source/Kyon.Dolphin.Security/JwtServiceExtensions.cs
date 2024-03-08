@@ -23,6 +23,7 @@ public static class JwtServiceExtensions
     /// Adds the JWT service to the service collection.
     /// </summary>
     /// <param name="services">The service collection to add the JWT service to.</param>
+    /// <param name="configuration">The configuration providing access to application settings.</param>
 
     #pragma warning disable CS8604
     public static void AddJwtBearer(this IServiceCollection services, IConfiguration configuration)
