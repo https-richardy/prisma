@@ -1,6 +1,8 @@
 # region ---- System global usings ----
 
 global using System.Linq.Expressions;
+global using System.Reflection;
+global using System.Security.Claims;
 
 # endregion
 
@@ -11,15 +13,14 @@ global using Kyon.Dolphin.Tests.Objects;
 global using Kyon.Dolphin.Core.Data.Repositories;
 global using Kyon.Dolphin.Core.Common;
 global using Kyon.Dolphin.Security;
-global using Microsoft.Extensions.Configuration;
-global using Microsoft.IdentityModel.Tokens;
-global using System.Security.Claims;
 
 # endregion
 
 # region ---- Microsoft global usings ----
 
 global using Microsoft.EntityFrameworkCore;
+global using Microsoft.Extensions.Configuration;
+global using Microsoft.IdentityModel.Tokens;
 
 # endregion
 
