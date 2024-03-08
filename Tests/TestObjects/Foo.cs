@@ -1,7 +1,7 @@
 // Kyon - Open Source Initiative
 // Licensed under the MIT License
 
-namespace Kyon.Dolphin.Tests;
+namespace Kyon.Dolphin.Tests.Objects;
 
 /// <summary>
 /// Represents a sample entity for testing purposes.
