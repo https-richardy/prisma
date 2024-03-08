@@ -30,4 +30,35 @@ public class JwtServiceTest
         Assert.NotNull(token);
         Assert.NotEmpty(token);
     }
+
+    [Fact]
+    public void Constructor_CustomOptions_ShouldInitializeOptionsCorrectly()
+    {
+        var customOptions = new JwtOptions
+        {
+            Key = Encoding.ASCII.GetBytes(Guid.NewGuid().ToString()),
+            SecurityAlgorithm = SecurityAlgorithms.Sha512,
+            Expires = DateTime.UtcNow.AddDays(3)
+        };
+
+        var jwtService = new JwtService(_configuration.Object, customOptions);
+        var options = GetOptions(jwtService);
+
+        Assert.Equal(customOptions.SecurityAlgorithm, options.SecurityAlgorithm);
+        Assert.Equal(customOptions.Expires, options.Expires);
+    }
+
+    #pragma warning disable CS8600, CS8603
+    /*
+        Private method to access the _options field using reflection.
+        This method is created to test if the JwtService initializes its options correctly without directly exposing
+        the private field _options in the test code. It allows us to maintain encapsulation while enabling
+        unit testing of the initialization logic.
+    */
+    private JwtOptions GetOptions(JwtService jwtService)
+    {
+        var optionsField = typeof(JwtService).GetField("_options", BindingFlags.NonPublic | BindingFlags.Instance);
+        return (JwtOptions)optionsField?.GetValue(jwtService);
+    }
+    #pragma warning restore CS8600, CS8603
 }
