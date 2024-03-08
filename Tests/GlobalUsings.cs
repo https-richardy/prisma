@@ -11,6 +11,7 @@ global using Kyon.Dolphin.Tests.Objects;
 global using Kyon.Dolphin.Core.Data.Repositories;
 global using Kyon.Dolphin.Core.Common;
 global using Kyon.Dolphin.Security;
+global using Microsoft.Extensions.Configuration;
 
 # endregion
 
