@@ -7,7 +7,7 @@ global using System.Linq.Expressions;
 # region ---- Project global usings ----
 
 global using Kyon.Dolphin.Core.Models;
-global using Kyon.Dolphin.Tests;
+global using Kyon.Dolphin.Tests.Objects;
 global using Kyon.Dolphin.Core.Data.Repositories;
 global using Kyon.Dolphin.Core.Common;
 
