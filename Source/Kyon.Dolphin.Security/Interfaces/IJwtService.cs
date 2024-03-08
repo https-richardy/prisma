@@ -5,7 +5,7 @@ using System.Security.Claims;
 
 namespace Kyon.Dolphin.Security;
 
-public interface IJwtTokenService
+public interface IJwtService
 {
     string GenerateToken(ClaimsIdentity claimsIdentity);
 }
