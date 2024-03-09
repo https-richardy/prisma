@@ -20,4 +20,6 @@ theme:
 
 nav:
   - Home: index.md
-  - References: references/index.md
+  - References:
+    - Index: references/index.md
+    - OperationResult: references/operation-result-enum.md
