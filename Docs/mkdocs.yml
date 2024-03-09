@@ -23,3 +23,4 @@ nav:
   - References:
     - Index: references/index.md
     - OperationResult: references/operation-result-enum.md
+    - IMinimalRepository Interface: references/minimal-repository-interface.md
