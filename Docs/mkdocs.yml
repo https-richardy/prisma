@@ -3,6 +3,7 @@ site_name: Dolphin documentation
 theme:
   name: material
   nav_style: dark
+  favicon: assets/images/icon.png
 
   palette:
   - scheme: default
