@@ -20,3 +20,4 @@ theme:
 
 nav:
   - Home: index.md
+  - References: references/index.md
