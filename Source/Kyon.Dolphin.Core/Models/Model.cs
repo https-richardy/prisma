@@ -11,6 +11,9 @@ namespace Kyon.Dolphin.Core.Models;
 /// <typeparam name="TKey">The type of the entity's indentifier.</typeparam>
 public abstract class Model<TKey> : IEntity<TKey>
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the entity.
+    /// </summary>
     public TKey Id { get; set; }
 }
 
