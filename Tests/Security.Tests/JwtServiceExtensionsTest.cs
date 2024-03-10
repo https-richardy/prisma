@@ -23,7 +23,7 @@ public class JwtServiceExtensionsTest
         _services.AddScoped<IConfiguration>(_ => _configuration.Object);
     }
 
-    [Fact]
+    [Fact(DisplayName = "services.AddJwtBearer should ad JwtService to the service collection")]
     public void AddJwtBearer_ShouldAddJwtServicesToCollection()
     {
         _services.AddJwtBearer(_configuration.Object);
@@ -33,7 +33,7 @@ public class JwtServiceExtensionsTest
         Assert.NotNull(jwtService);
     }
 
-    [Fact]
+    [Fact(DisplayName = "services.AddJwtBearer with custom options should configure options correctly")]
     public void AddJwtBearer_WithCustomOptions_ShouldConfigureOptionsCorrectly()
     {
         var customExpiresDays = DateTime.UtcNow.AddDays(15);

@@ -23,7 +23,7 @@ public class JwtServiceTest
         _fixture.Behaviors.Add(new OmitOnRecursionBehavior());
     }
 
-    [Fact]
+    [Fact(DisplayName = "JwtService.GenerateToken() should generate a token")]
     public void GenerateToken_ShouldGenerateToken()
     {
         var claimsIdentity = _fixture.Create<ClaimsIdentity>();
@@ -33,7 +33,7 @@ public class JwtServiceTest
         Assert.NotEmpty(token);
     }
 
-    [Fact]
+    [Fact(DisplayName = "JwtService.JwtOptions custom security algorithm should set correctly")]
     public void JwtOptions_CustomSecurityAlgorithm_ShouldSetCorrectly()
     {
         var customSecurityAlgorithm = SecurityAlgorithms.Sha512;
@@ -45,7 +45,7 @@ public class JwtServiceTest
         Assert.Equal(customSecurityAlgorithm, actualOptions.SecurityAlgorithm);
     }
 
-    [Fact]
+    [Fact(DisplayName = "JwtService.JwtOptions custom expires days should set correctly")]
     public void JwtOptions_CustomExpiresDays_ShouldSetCorrectly()
     {
         var customExpires = DateTime.UtcNow.AddDays(15);
@@ -57,7 +57,7 @@ public class JwtServiceTest
         Assert.Equal(customExpires, actualOptions.Expires);
     }
 
-    [Fact]
+    [Fact(DisplayName = "Constructor with custom options should initialize options correctly")]
     public void Constructor_CustomOptions_ShouldInitializeOptionsCorrectly()
     {
         var customOptions = new JwtOptions

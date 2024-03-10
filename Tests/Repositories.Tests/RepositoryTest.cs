@@ -35,7 +35,7 @@ public class RepositoryTest : IAsyncLifetime
         _dbContext.Dispose();
     }
 
-    [Fact]
+    [Fact(DisplayName = "CountAsync() should return zero when no entities exist")]
     public async Task CountAsync_ShouldReturnZeroWhenNoEntitiesExist()
     {
         var result = await _repository.CountAsync();
@@ -43,7 +43,7 @@ public class RepositoryTest : IAsyncLifetime
         Assert.Equal(0, result);
     }
 
-    [Fact]
+    [Fact(DisplayName = "CountAsync() with predicate should return correct count")]
     public async Task CountAsync_WithPredicate_ShouldReturnCorrectCount()
     {
         var entitiesToAdd = _fixture.CreateMany<Foo>(3);
@@ -58,7 +58,7 @@ public class RepositoryTest : IAsyncLifetime
         Assert.Equal(entitiesToAdd.Count(), result);
     }
 
-    [Fact]
+    [Fact(DisplayName = "ExistsAsync() should return true for existing identifier")]
     public async Task ExistsAsync_ShouldReturnTrueForExistingId()
     {
         var entityToAdd = _fixture.Create<Foo>();
@@ -70,7 +70,7 @@ public class RepositoryTest : IAsyncLifetime
         Assert.True(result);
     }
 
-    [Fact]
+    [Fact(DisplayName = "ExistsAsync() should return false for non-existing identifier")]
     public async Task ExistsAsync_ShouldReturnFalseForNonExistingId()
     {
         const int nonExistingId = 999999;
@@ -79,7 +79,7 @@ public class RepositoryTest : IAsyncLifetime
         Assert.False(result);
     }
 
-    [Fact]
+    [Fact(DisplayName = "FindAllAsync() should return correct collection for matching predicate")]
     public async Task FindAllAsync_ShouldReturnCorrectCollectionForMatchingPredicate()
     {
         var entity1 = _fixture.Build<Foo>()
@@ -106,7 +106,7 @@ public class RepositoryTest : IAsyncLifetime
         Assert.Contains(entity3, result);
     }
 
-    [Fact]
+    [Fact(DisplayName = "FindSingleAsync() should return correct entity for matching predicate")]
     public async Task FindSingleAsync_ShouldReturnCorrectEntityForMatchingPredicate()
     {
         var entity1 = _fixture.Build<Foo>()
@@ -127,7 +127,7 @@ public class RepositoryTest : IAsyncLifetime
         Assert.Equal(entity2, result);
     }
 
-    [Fact]
+    [Fact(DisplayName = "FindSingleAsync() should return null for non-matching predicate")]
     public async Task FindSingleAsync_ShouldReturnNullForNonMatchingPredicate()
     {
         var entity1 = _fixture.Build<Foo>()
@@ -147,7 +147,7 @@ public class RepositoryTest : IAsyncLifetime
         Assert.Null(result);
     }
 
-    [Fact]
+    [Fact(DisplayName = "PagedAsync() should return correct paged collection")]
     public async Task PagedAsync_ShouldReturnCorrectPagedCollection()
     {
         var entities = _fixture.Build<Foo>()
@@ -170,7 +170,7 @@ public class RepositoryTest : IAsyncLifetime
         Assert.Equal(expectedEntities, result);
     }
 
-    [Fact]
+    [Fact(DisplayName = "PagedAsync() with predicate should return correct paged collection")]
     public async Task PagedAsync_WithPredicate_ShouldReturnCorrectPagedCollection()
     {
         var entities = _fixture.Build<Foo>()

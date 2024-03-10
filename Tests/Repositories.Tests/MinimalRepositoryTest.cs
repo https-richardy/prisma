@@ -35,7 +35,7 @@ public class MinimalRepositoryTest : IAsyncLifetime
         _dbContext.Dispose();
     }
 
-    [Fact]
+    [Fact(DisplayName = "SaveAsync() should add entity and return success")]
     public async Task SaveAsync_ShouldAddEntityAndReturnSuccess()
     {
         var newEntity = _fixture.Create<Foo>();
@@ -45,7 +45,7 @@ public class MinimalRepositoryTest : IAsyncLifetime
         Assert.Contains(newEntity, _dbContext.Foos);
     }
 
-    [Fact]
+    [Fact(DisplayName = "SaveAsync() should return failed when an exception is thrown")]
     public async Task SaveAsync_ShouldReturnFailedOnException()
     {
         var newEntity = _fixture.Create<Foo>();
@@ -66,7 +66,7 @@ public class MinimalRepositoryTest : IAsyncLifetime
         Assert.Equal(OperationResult.Failed, result);
     }
 
-    [Fact]
+    [Fact(DisplayName = "UpdateAsync() should update existing entity and return sucess")]
     public async Task UpdateAsync_ShouldUpdateExistingEntityAndReturnSuccess()
     {
         var existingEntity = _fixture.Create<Foo>();
@@ -85,7 +85,7 @@ public class MinimalRepositoryTest : IAsyncLifetime
         Assert.Equal("John Doe", updatedEntity.Name);
     }
 
-    [Fact]
+    [Fact(DisplayName = "UpdateAsync() should return failed if entity does not exist")]
     public async Task UpdateAsync_ShouldReturnFailedIfEntityDoesNotExist()
     {
         var nonExistingEntity = _fixture.Create<Foo>();
@@ -94,7 +94,7 @@ public class MinimalRepositoryTest : IAsyncLifetime
         Assert.Equal(OperationResult.Failed, result);
     }
 
-    [Fact]
+    [Fact(DisplayName = "DeleteAsync() should return delete existing entity and return success")]
     public async Task DeleteAsync_ShouldDeleteExistingEntityAndReturnSuccess()
     {
         var existingEntity = _fixture.Create<Foo>();
@@ -108,7 +108,7 @@ public class MinimalRepositoryTest : IAsyncLifetime
         Assert.DoesNotContain(existingEntity, _dbContext.Foos);
     }
 
-    [Fact]
+    [Fact(DisplayName = "DeleteAsync() should return failed if entity does not exist")]
     public async Task DeleteAsync_ShouldReturnFailedIfEntityDoesNotExist()
     {
         var nonExistingEntity = _fixture.Create<Foo>();
@@ -117,7 +117,7 @@ public class MinimalRepositoryTest : IAsyncLifetime
         Assert.Equal(OperationResult.Failed, result);
     }
 
-    [Fact]
+    [Fact(DisplayName = "RetrieveAllAsync() should return all entities in context")]
     public async Task RetrieveAllAsync_ShouldReturnAllEntitiesInContext()
     {
         var entities = _fixture.CreateMany<Foo>(3).ToList();
@@ -134,7 +134,7 @@ public class MinimalRepositoryTest : IAsyncLifetime
         }
     }
 
-    [Fact]
+    [Fact(DisplayName = "RetrieveByIdAsync() should return entity when ID exists")]
     public async Task RetrieveByIdAsync_ShouldReturnEntityWhenIdExists()
     {
         var existingEntity = _fixture.Create<Foo>();
@@ -148,7 +148,7 @@ public class MinimalRepositoryTest : IAsyncLifetime
         Assert.Equal(existingEntity.Id, resultEntity.Id);
     }
 
-    [Fact]
+    [Fact(DisplayName = "RetrieveByIdAsync() should return null when ID does not exist")]
     public async Task RetrieveByIdAsync_ShouldReturnNullWhenIdDoesNotExist()
     {
         var nonExistingId = _fixture.Create<int>();
@@ -157,7 +157,7 @@ public class MinimalRepositoryTest : IAsyncLifetime
         Assert.Null(resultEntity);
     }
 
-    [Theory]
+    [Theory(DisplayName = "RetrieveByIdAsync() should throw ArgumentException for unsupported key types")]
     [InlineData(typeof(Guid))]
     [InlineData(typeof(decimal))]
     [InlineData(typeof(object))]
