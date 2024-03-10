@@ -15,6 +15,21 @@ public class PaginatorTest
         _fixture.Behaviors.Add(new OmitOnRecursionBehavior());
     }
 
+    [Fact(DisplayName = "Paginator should calculate next and previous URLs")]
+    public void Paginator_CalculatesNextAndPreviousUrls()
+    {
+        var data = _fixture.CreateMany<Foo>(100);
+        var httpContext = new DefaultHttpContext();
+
+        const int pageNumber = 2;
+        const int pageSize = 10;
+
+        var paginator = new Paginator<Foo>(data, pageNumber, pageSize, httpContext);
+
+        Assert.NotNull(paginator.Next);
+        Assert.NotNull(paginator.Previous);
+    }
+
     [Fact(DisplayName = "Paginator should be constructed with Foo entity")]
     public void Paginator_ConstructedWithFooEntity()
     {
