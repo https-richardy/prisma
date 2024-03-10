@@ -3,6 +3,8 @@
     license: Licensed under the MIT License
 */
 
+namespace Prisma.Tests.Security;
+
 public class JwtServiceExtensionsTest
 {
     private readonly IServiceCollection _services;
