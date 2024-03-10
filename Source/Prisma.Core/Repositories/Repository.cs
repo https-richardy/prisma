@@ -1,11 +1,13 @@
-// Kyon - Open Source Initiative
-// Licensed under the MIT License
+/*
+    author: Richard Garcia (https://github.com/https-richardy)
+    license: Licensed under the MIT License
+*/
 
 using System.Linq.Expressions;
-using Kyon.Dolphin.Core.Models;
+using Prisma.Core.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace Kyon.Dolphin.Core.Data.Repositories;
+namespace Prisma.Core.Data.Repositories;
 
 /// <summary>
 /// Base repository class providing extended query operations for entities using Entity Framework.

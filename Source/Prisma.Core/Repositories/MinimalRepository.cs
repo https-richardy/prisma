@@ -1,11 +1,13 @@
-// Kyon - Open Source Initiative
-// Licensed under the MIT License
+/*
+    author: Richard Garcia (https://github.com/https-richardy)
+    license: Licensed under the MIT License
+*/
 
-using Kyon.Dolphin.Core.Common;
-using Kyon.Dolphin.Core.Models;
+using Prisma.Core.Common;
+using Prisma.Core.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace Kyon.Dolphin.Core.Data.Repositories;
+namespace Prisma.Core.Data.Repositories;
 
 /// <summary>
 /// A generic repository providing CRUD operations for entities using Entity Framework.

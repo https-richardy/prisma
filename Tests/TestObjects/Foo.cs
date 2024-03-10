@@ -1,7 +1,9 @@
-// Kyon - Open Source Initiative
-// Licensed under the MIT License
+/*
+    author: Richard Garcia (https://github.com/https-richardy)
+    license: Licensed under the MIT License
+*/
 
-namespace Kyon.Dolphin.Tests.Objects;
+namespace Prisma.Tests.Objects;
 
 /// <summary>
 /// Represents a sample entity for testing purposes.

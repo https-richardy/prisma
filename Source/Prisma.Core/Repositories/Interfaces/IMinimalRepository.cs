@@ -1,9 +1,11 @@
-// Kyon - Open Source Initiative
-// Licensed under the MIT License
+/*
+    author: Richard Garcia (https://github.com/https-richardy)
+    license: Licensed under the MIT License
+*/
 
-using Kyon.Dolphin.Core.Common;
+using Prisma.Core.Common;
 
-namespace Kyon.Dolphin.Core.Data.Repositories;
+namespace Prisma.Core.Data.Repositories;
 
 /// <summary>
 /// Minimal repository interface for basic CRUD operations on entities.

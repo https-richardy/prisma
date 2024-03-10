@@ -1,9 +1,11 @@
-// Kyon - Open Source Initiative
-// Licensed under the MIT License
+/*
+    author: Richard Garcia (https://github.com/https-richardy)
+    license: Licensed under the MIT License
+*/
 
 using System.Security.Claims;
 
-namespace Kyon.Dolphin.Security;
+namespace Prisma.Security;
 
 /// <summary>
 /// Interface for a service responsible for creating JSON Web Token (JWT) based on provided user information (claims identity).

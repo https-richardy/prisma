@@ -1,5 +1,7 @@
-// Kyon - Open Source Initiative
-// Licensed under the MIT License
+/*
+    author: Richard Garcia (https://github.com/https-richardy)
+    license: Licensed under the MIT License
+*/
 
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -7,7 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 
-namespace Kyon.Dolphin.Security.Extensions;
+namespace Prisma.Security.Extensions;
 
 /// <summary>
 /// Provides extensions for configuring JWT services.

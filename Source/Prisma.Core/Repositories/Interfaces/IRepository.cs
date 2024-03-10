@@ -1,9 +1,11 @@
-// Kyon - Open Source Initiative
-// Licensed under the MIT License
+/*
+    author: Richard Garcia (https://github.com/https-richardy)
+    license: Licensed under the MIT License
+*/
 
 using System.Linq.Expressions;
 
-namespace Kyon.Dolphin.Core.Data.Repositories;
+namespace Prisma.Core.Data.Repositories;
 
 /// <summary>
 /// Extension of the <see cref="IMinimalRepository{TEntity}"/> interface providing additional query operations.

@@ -5,15 +5,14 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 
-    <PackageId>Kyon.Dolphin</PackageId>
+    <PackageId>Prisma</PackageId>
     <Version>1.0.0-alpha1</Version>
-    <Authors>Kyon</Authors>
-    <Company>Kyon</Company>
-    <RepositoryUrl>https://github.com/kyon-slns/dolphin</RepositoryUrl>
+    <Authors>Richard Garcia</Authors>
+    <RepositoryUrl>https://github.com/https-richardy/prisma</RepositoryUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <Title>Dolphin</Title>
+    <Title>Prisma</Title>
     <Description>
-      Dolphin is your .NET companion for developing web APIs. Crafted with simplicity in mind, this library provides common functionality to speed up your development process.
+      Prisma is your .NET companion for developing web APIs. Crafted with simplicity in mind, this library provides common functionality to speed up your development process.
     </Description>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);1591</NoWarn>

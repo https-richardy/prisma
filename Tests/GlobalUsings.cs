@@ -9,12 +9,12 @@ global using System.Text;
 
 # region ---- Project global usings ----
 
-global using Kyon.Dolphin.Core.Models;
-global using Kyon.Dolphin.Tests.Objects;
-global using Kyon.Dolphin.Core.Data.Repositories;
-global using Kyon.Dolphin.Core.Common;
-global using Kyon.Dolphin.Security;
-global using Kyon.Dolphin.Security.Extensions;
+global using Prisma.Core.Models;
+global using Prisma.Tests.Objects;
+global using Prisma.Core.Data.Repositories;
+global using Prisma.Core.Common;
+global using Prisma.Security;
+global using Prisma.Security.Extensions;
 
 # endregion
 

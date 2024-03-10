@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prisma", "Source\Prisma.csproj", "{096B87EA-D3AE-47A5-8512-7DA172F3561F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prisma.Tests", "Tests\Prisma.Tests.csproj", "{1B057899-3349-4EDE-A054-3F455298637E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{096B87EA-D3AE-47A5-8512-7DA172F3561F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{096B87EA-D3AE-47A5-8512-7DA172F3561F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{096B87EA-D3AE-47A5-8512-7DA172F3561F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{096B87EA-D3AE-47A5-8512-7DA172F3561F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B057899-3349-4EDE-A054-3F455298637E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B057899-3349-4EDE-A054-3F455298637E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B057899-3349-4EDE-A054-3F455298637E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B057899-3349-4EDE-A054-3F455298637E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

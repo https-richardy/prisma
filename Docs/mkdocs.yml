@@ -1,4 +1,4 @@
-site_name: Dolphin documentation
+site_name: Prisma documentation
 
 theme:
   name: material

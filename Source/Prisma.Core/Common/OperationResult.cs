@@ -1,7 +1,9 @@
-// Kyon - Open Source Initiative
-// Licensed under the MIT License
+/*
+    author: Richard Garcia (https://github.com/https-richardy)
+    license: Licensed under the MIT License
+*/
 
-namespace Kyon.Dolphin.Core.Common;
+namespace Prisma.Core.Common;
 
 /// <summary>
 /// Represents the result of an operation, indicating whether the operation was successful or failed.
