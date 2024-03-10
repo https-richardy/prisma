@@ -3,8 +3,6 @@ site_name: Prisma documentation
 theme:
   name: material
   nav_style: dark
-  favicon: assets/images/icon.png
-  logo: assets/images/icon.png
 
   palette:
   - scheme: default
