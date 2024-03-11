@@ -19,4 +19,16 @@ public abstract class Model<TKey> : IEntity<TKey>
     public TKey Id { get; set; }
 }
 
+/// <summary>
+/// Represents a base model for entities with a primary key of type <see cref="int"/>.
+/// </summary>
+/// <remarks>
+/// This class is a convenience class that inherits from <see cref="Model{TKey}"/> with
+/// the type parameter Tkey set to <see cref="int"/>.
+/// </remarks>
+public class Model : Model<int>
+{
+
+}
+
 # pragma warning restore CS8618
