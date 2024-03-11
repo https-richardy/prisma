@@ -10,11 +10,24 @@ using Microsoft.EntityFrameworkCore;
 namespace Prisma.Core.Data.Repositories;
 
 /// <summary>
-/// Base repository class providing extended query operations for entities using Entity Framework.
+/// Repository class providing extended query operations for entities using Entity Framework.
 /// </summary>
 /// <typeparam name="TEntity">The type of entity managed by the repository.</typeparam>
-/// <typeparam name="TKey">The type of entity's primary key</typeparam>
+/// <typeparam name="TKey">The type of entity's primary key.</typeparam>
 /// <typeparam name="TDbContext">The type of the Entity Framework DbContext.</typeparam>
+/// <remarks>
+/// <para>
+/// The <see cref="Repository{TEntity, TKey, TDbContext}"/> class is an extension of the <see cref="MinimalRepository{TEntity, TKey, TDbContext}"/>,
+/// building upon its foundation to offer additional query operations for Entity Framework entities.
+/// </para>
+/// <para>
+/// While <see cref="MinimalRepository{TEntity, TKey, TDbContext}"/> provides basic CRUD operations, 
+/// <see cref="Repository{TEntity, TKey, TDbContext}"/> enhances functionality by incorporating advanced querying capabilities.
+/// </para>
+/// <para>
+/// It is suitable for scenarios where a more comprehensive set of query operations is needed beyond simple Create, Read, Update, and Delete (CRUD).
+/// </para>
+/// </remarks>
 public abstract class Repository<TEntity, TKey, TDbContext> : MinimalRepository<TEntity, TKey, TDbContext>, IRepository<TEntity>
     where TEntity : class, IEntity<TKey>
     where TDbContext : DbContext
