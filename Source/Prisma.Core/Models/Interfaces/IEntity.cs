@@ -16,3 +16,15 @@ public interface IEntity<TKey>
     /// </summary>
     TKey Id { get; }
 }
+
+/// <summary>
+/// Interface representing an entity with a primary key of type <see cref="int"/>.
+/// </summary>
+/// <remarks>
+/// This interface is a convenience interface that inherits from <see cref="IEntity{TKey}"/>
+/// with the type parameter TKey set to <see cref="int"/>.
+/// </remarks>
+public interface IEntity : IEntity<int>
+{
+
+}
