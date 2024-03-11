@@ -32,7 +32,7 @@ public abstract class Model<TKey> : IEntity<TKey>
 /// This class is a convenience class that inherits from <see cref="Model{TKey}"/> with
 /// the type parameter Tkey set to <see cref="int"/>.
 /// </remarks>
-public class Model : Model<int>
+public class Model : Model<int>, IEntity
 {
 
 }
