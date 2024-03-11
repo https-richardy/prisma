@@ -8,7 +8,12 @@ namespace Prisma.Core.Models;
 /// <summary>
 /// Interface representing an entity with a primary key.
 /// </summary>
-/// <typeparam name="TKey">The type of the primary key</typeparam>
+/// <typeparam name="TKey">The type of the primary key.</typeparam>
+/// <remarks>
+/// This interface defines the basic contract for entities within the application.
+/// Entities implementing this interface should provide a unique identifier property
+/// represented by the <see cref="Id"/> property.
+/// </remarks>
 public interface IEntity<TKey>
 {
     /// <summary>
