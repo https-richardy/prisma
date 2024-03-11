@@ -129,3 +129,30 @@ public abstract class Repository<TEntity, TKey, TDbContext> : MinimalRepository<
             .ToListAsync();
     }
 }
+
+/// <summary>
+/// Convenience class for creating a repository for entities with an integer primary key using Entity Framework.
+/// </summary>
+/// <typeparam name="TEntity">The type of entity managed by the repository.</typeparam>
+/// <typeparam name="TDbContext">The type of the Entity Framework DbContext.</typeparam>
+/// <remarks>
+/// <para>
+/// The <c>Repository</c> class is a specialization of the more generic <see cref="Repository{TEntity, TKey, TDbContext}"/>,
+/// specifically designed for entities with an integer primary key. It provides a more concise syntax for creating repositories
+/// when dealing with entities that have integer primary keys, offering basic CRUD operations seamlessly.
+/// </para>
+/// <para>
+/// While <see cref="Repository{TEntity, TDbContext}"/> is tailored for entities with integer primary keys,
+/// the more generic <see cref="Repository{TEntity, TKey, TDbContext}"/> allows for added flexibility,
+/// accommodating entities with non-integer primary keys.
+/// </para>
+/// </remarks>
+public class Repository<TEntity, TDbContext> : Repository<TEntity, int, TDbContext>
+    where TEntity : class, IEntity<int>
+    where TDbContext : DbContext
+{
+    public Repository(TDbContext dbContext) : base(dbContext)
+    {
+
+    }
+}
