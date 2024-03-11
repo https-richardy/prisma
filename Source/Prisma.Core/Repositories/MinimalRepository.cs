@@ -10,11 +10,17 @@ using Microsoft.EntityFrameworkCore;
 namespace Prisma.Core.Data.Repositories;
 
 /// <summary>
-/// A generic repository providing CRUD operations for entities using Entity Framework.
+/// A generic repository providing basic CRUD operations for entities using Entity Framework.
 /// </summary>
 /// <typeparam name="TEntity">The type of entity managed by the repository.</typeparam>
-/// <typeparam name="TKey">The type of entity's primary key.</typeparam>
+/// <typeparam name="TKey">The type of the entity's primary key.</typeparam>
 /// <typeparam name="TDbContext">The type of the Entity Framework DbContext.</typeparam>
+/// <remarks>
+/// The <see cref="MinimalRepository{TEntity, TKey, TDbContext}"/> serves as a generic repository implementation
+/// for handling basic CRUD (Create, Read, Update, Delete) operations for entities in the application.
+/// This repository is designed to work with Entity Framework, and the type parameters allow flexibility in
+/// choosing the entity type, the type of its primary key, and the DbContext type for data access.
+/// </remarks>
 public abstract class MinimalRepository<TEntity, TKey, TDbContext> : IMinimalRepository<TEntity>
     where TEntity : class, IEntity<TKey>
     where TDbContext : DbContext
