@@ -158,3 +158,28 @@ public abstract class MinimalRepository<TEntity, TKey, TDbContext> : IMinimalRep
         # pragma warning restore
     }
 }
+
+/// <summary>
+/// A generic repository providing basic CRUD operations for entities using Entity Framework with a primary key of type <see cref="int"/>.
+/// </summary>
+/// <typeparam name="TEntity">The type of entity managed by the repository.</typeparam>
+/// <typeparam name="TDbContext">The type of the Entity Framework DbContext.</typeparam>
+/// <remarks>
+/// <para>
+/// This repository is a specialization of <see cref="MinimalRepository{TEntity, TKey, TDbContext}"/> with the primary key set to <see cref="int"/>.
+/// It is designed to work seamlessly with entities having an integer primary key.
+/// </para>
+/// <para>
+/// While <see cref="MinimalRepository{TEntity, TDbContext}"/> provides a convenient way to handle basic CRUD operations for entities with integer primary keys,
+/// you can use the more generic <see cref="MinimalRepository{TEntity, TKey, TDbContext}"/> for added flexibility when dealing with entities that have non-integer primary keys.
+/// </para>
+/// </remarks>
+public class MinimalRepository<TEntity, TDbContext> : MinimalRepository<TEntity, int, TDbContext>
+    where TEntity : class, IEntity, new()
+    where TDbContext : DbContext
+{
+    public MinimalRepository(TDbContext dbContext) : base(dbContext)
+    {
+
+    }
+}
