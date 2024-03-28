@@ -1,9 +1,9 @@
-namespace Prisma.Core.Services.Exceptions;
-
 /*
     author: Richard Garcia (https://github.com/https-richardy)
     license: Licensed under the MIT License
 */
+
+namespace Prisma.Core.Services.Exceptions;
 
 /// <summary>
 /// Exception thrown when the size of the file exceeds the maximum allowed size.
