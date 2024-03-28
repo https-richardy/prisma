@@ -25,12 +25,9 @@ public class FileUploadServiceTestSuite
     public async Task UploadFileAsync_ValidFileReturnsFilePath()
     {
         const string fileName = "test.png";
-        const long fileSizeBytes = 1024; // Sample file size bytes - 1KB
 
         var formFile = new Mock<IFormFile>();
-
         formFile.Setup(file => file.FileName).Returns(fileName);
-        formFile.Setup(file => file.Length).Returns(fileSizeBytes);
 
         var filePath = await _fileUploadService.UploadFileAsync(formFile.Object);
 
@@ -38,5 +35,16 @@ public class FileUploadServiceTestSuite
 
         Assert.NotNull(filePath);
         Assert.True(File.Exists(filePath));
+    }
+
+    [Fact(DisplayName = "UploadFileAsync should throw InvalidFileExtensionException for a file with disallowed extension")]
+    public async Task UploadFileAsync_DisallowedExtension_ThrowsInvalidFileExtensionException()
+    {
+        const string fileName = "test.exe";
+
+        var formFile = new Mock<IFormFile>();
+        formFile.Setup(file => file.FileName).Returns(fileName);
+
+        await Assert.ThrowsAsync<InvalidFileExtensionException>(() => _fileUploadService.UploadFileAsync(formFile.Object));
     }
 }
