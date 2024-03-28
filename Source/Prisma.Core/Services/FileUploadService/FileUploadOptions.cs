@@ -3,6 +3,8 @@
     license: Licensed under the MIT License
 */
 
+namespace Prisma.Core.Services;
+
 /// <summary>
 /// Represents options for configuring file uploads.
 /// </summary>
