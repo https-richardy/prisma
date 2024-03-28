@@ -45,4 +45,18 @@ public class FileUploadServiceTestSuite
 
         await Assert.ThrowsAsync<InvalidFileExtensionException>(() => _fileUploadService.UploadFileAsync(formFile.Object));
     }
+
+    [Fact(DisplayName = "UploadFileAsync should throw FileSizeLimitExceededException for a file exceeding the maximum allowed size")]
+    public async Task UploadFileAsync_ExceedsMaxFileSize_ThrowsFileSizeLimitExceededException()
+    {
+        const string fileName = "test.png";
+        const long fileSize = 15 * 1024 * 1024; // 15 MB
+
+        var formFile = new Mock<IFormFile>();
+
+        formFile.Setup(file => file.Length).Returns(fileSize);
+        formFile.Setup(file => file.FileName).Returns(fileName);
+
+        await Assert.ThrowsAsync<FileSizeLimitExceededException>(() => _fileUploadService.UploadFileAsync(formFile.Object));
+    }
 }
