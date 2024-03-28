@@ -31,8 +31,6 @@ public class FileUploadServiceTestSuite
 
         var filePath = await _fileUploadService.UploadFileAsync(formFile.Object);
 
-        Console.WriteLine(filePath);
-
         Assert.NotNull(filePath);
         Assert.True(File.Exists(filePath));
     }
