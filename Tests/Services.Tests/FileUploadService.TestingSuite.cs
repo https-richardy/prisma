@@ -36,6 +36,7 @@ public class FileUploadServiceTestSuite
         var fileUploadService = new FileUploadService(options);
 
         const string fileName = "test.png";
+
         var formFile = new Mock<IFormFile>();
         formFile.Setup(file => file.FileName).Returns(fileName);
 
