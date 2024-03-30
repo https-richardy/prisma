@@ -47,6 +47,29 @@ public class FileUploadServiceTestSuite
         Assert.NotEqual(fileName, Path.GetFileName(filePath));
     }
 
+    [Fact(DisplayName = "UploadFileAsync should save the file with the same name when GenerateUniqueFileNames is false and OverwriteExistingFiles is true")]
+    public async Task UploadFileAsync_SameFileName_WhenGenerateUniqueFileNamesFalseAndOverwriteExistingFilesTrue()
+    {
+        var options = new FileUploadOptions
+        {
+            GenerateUniqueFileNames = false,
+            OverwriteExistingFiles = true,
+            UploadsDirectory = _uploadsDirectory,
+        };
+
+        var fileUploadService = new FileUploadService(options);
+
+        const string fileName = "test.png";
+        var formFile = new Mock<IFormFile>();
+        formFile.Setup(file => file.FileName).Returns(fileName);
+
+        var filePath = await fileUploadService.UploadFileAsync(formFile.Object);
+
+        Assert.NotNull(filePath);
+        Assert.True(File.Exists(filePath));
+        Assert.Equal(fileName, Path.GetFileName(filePath));
+    }
+
     [Fact(DisplayName = "UploadFileAsync should return file path for a valid file")]
     public async Task UploadFileAsync_ValidFileReturnsFilePath()
     {
