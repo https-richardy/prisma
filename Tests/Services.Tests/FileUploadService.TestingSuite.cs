@@ -69,6 +69,7 @@ public class FileUploadServiceTestSuite
         var options = new FileUploadOptions
         {
             GenerateUniqueFileNames = false,
+            UploadsDirectory = _uploadsDirectory,
         };
 
         var fileUploadService = new FileUploadService(options);
@@ -81,6 +82,6 @@ public class FileUploadServiceTestSuite
         var formFile = new Mock<IFormFile>();
         formFile.Setup(file => file.FileName).Returns(fileName);
 
-        await Assert.ThrowsAsync<FileOverwriteNotAllowedException>(() => _fileUploadService.UploadFileAsync(formFile.Object));
+        await Assert.ThrowsAsync<FileOverwriteNotAllowedException>(() => fileUploadService.UploadFileAsync(formFile.Object));
     }
 }
