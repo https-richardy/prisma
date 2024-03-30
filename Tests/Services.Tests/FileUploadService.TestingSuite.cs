@@ -24,6 +24,28 @@ public class FileUploadServiceTestSuite
         _fileUploadService = new FileUploadService(_webHostEnvironment.Object);
     }
 
+    [Fact(DisplayName = "UploadFileAsync should save the file with a unique name when GenerateUniqueFileNames is true")]
+    public async Task UploadFileAsync_UniqueFileName_WhenGenerateUniqueFileNamesTrue()
+    {
+        var options = new FileUploadOptions
+        {
+            GenerateUniqueFileNames = true,
+            UploadsDirectory = _uploadsDirectory,
+        };
+
+        var fileUploadService = new FileUploadService(options);
+
+        const string fileName = "test.png";
+        var formFile = new Mock<IFormFile>();
+        formFile.Setup(file => file.FileName).Returns(fileName);
+
+        var filePath = await fileUploadService.UploadFileAsync(formFile.Object);
+
+        Assert.NotNull(filePath);
+        Assert.True(File.Exists(filePath));
+        Assert.NotEqual(fileName, Path.GetFileName(filePath));
+    }
+
     [Fact(DisplayName = "UploadFileAsync should return file path for a valid file")]
     public async Task UploadFileAsync_ValidFileReturnsFilePath()
     {
