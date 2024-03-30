@@ -91,7 +91,7 @@ public class FileUploadService : IFileUploadService
         var filePath = Path.Combine(_options.UploadsDirectory, fileName);
 
         /* Check if the file should be overwritten */
-        if (!_options.OverwriteExistingFiles && File.Exists(filePath))
+        if (_options.OverwriteExistingFiles == false && File.Exists(filePath))
             throw new FileOverwriteNotAllowedException("File already exists and overwriting is not allowed.");
 
         using (var stream = new FileStream(filePath, FileMode.Create))
