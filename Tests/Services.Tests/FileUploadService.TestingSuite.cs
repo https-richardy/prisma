@@ -70,6 +70,36 @@ public class FileUploadServiceTestSuite
         Assert.Equal(fileName, Path.GetFileName(filePath));
     }
 
+    [Fact(DisplayName = "UploadFileAsync should create the uploads directory if it does not exist")]
+    public async Task UploadFileAsync_CreateUploadsDirectoryIfNotExists()
+    {
+        var options = new FileUploadOptions
+        {
+            GenerateUniqueFileNames = false,
+            OverwriteExistingFiles = true,
+            UploadsDirectory = _uploadsDirectory,
+        };
+
+        // Delete the uploads directory if it exists
+        if (Directory.Exists(_uploadsDirectory))
+            Directory.Delete(_uploadsDirectory, true);
+
+        var fileUploadService = new FileUploadService(options);
+
+        const string fileName = "test.png";
+
+        var formFile = new Mock<IFormFile>();
+        formFile.Setup(file => file.FileName).Returns(fileName);
+
+        var filePath = await fileUploadService.UploadFileAsync(formFile.Object);
+
+        Assert.NotNull(filePath);
+        Assert.True(File.Exists(filePath));
+
+        Assert.Equal(fileName, Path.GetFileName(filePath));
+        Assert.True(Directory.Exists(_uploadsDirectory));
+    }
+
     [Fact(DisplayName = "UploadFileAsync should return file path for a valid file")]
     public async Task UploadFileAsync_ValidFileReturnsFilePath()
     {
