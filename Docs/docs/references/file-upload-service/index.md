@@ -22,7 +22,7 @@ In this documentation, you will find detailed information about the following co
 - [FileUploadOptions](file-upload-options.md)
 - [FileUploadService](file-upload-service.md)
 - [FileUploadServiceExtension](file-upload-service-extension.md)
-- IFileUploadService
+- [IFileUploadService](file-upload-service-interface.md)
 - FileOverwriteNotAllowedException
 - FileSizeLimitExceededException
 - InvalidFileExtensionException
