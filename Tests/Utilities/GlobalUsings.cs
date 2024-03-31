@@ -17,6 +17,7 @@ global using Prisma.Security;
 global using Prisma.Security.Extensions;
 global using Prisma.Core.Services;
 global using Prisma.Core.Services.Exceptions;
+global using Prisma.Core.Services.Extensions;
 
 # endregion
 
