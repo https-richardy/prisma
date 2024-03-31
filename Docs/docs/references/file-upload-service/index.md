@@ -20,7 +20,7 @@ The FileUploadService is responsible for:
 In this documentation, you will find detailed information about the following components:
 
 - [FileUploadOptions](file-upload-options.md)
-- FileUploadService
+- [FileUploadService](file-upload-service.md)
 - FileUploadServiceExtension
 - IFileUploadService
 - FileOverwriteNotAllowedException
