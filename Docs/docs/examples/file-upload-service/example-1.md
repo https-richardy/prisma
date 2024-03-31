@@ -47,42 +47,42 @@ Now, we can use `FileUploadService` in a controller to handle file uploads. Belo
 ```csharp
 public class UploadController : ControllerBase
 {
-    private readonly IFileUploadService _fileUploadService;
+     private readonly IFileUploadService _fileUploadService;
 
-    public UploadController(IFileUploadService fileUploadService)
-    {
-        _fileUploadService = fileUploadService;
-    }
+     public UploadController(IFileUploadService fileUploadService)
+     {
+         _fileUploadService = fileUploadService;
+     }
 
-    [HttpPost("upload")]
-    public async Task<IActionResult> UploadFileAsync(IFormFile file)
-    {
-        try
-        {
-            if (file == null || file.Length == 0)
-                return BadRequest("Nenhum arquivo foi enviado.");
+     [HttpPost("upload")]
+     public async Task<IActionResult> UploadFileAsync(IFormFile file)
+     {
+         try
+         {
+             if (file == null || file.Length == 0)
+                 return BadRequest("No files were sent.");
 
-            var filePath = await _fileUploadService.UploadFileAsync(file);
+             var filePath = await _fileUploadService.UploadFileAsync(file);
 
-            return Ok($"Arquivo enviado com sucesso! Caminho: {filePath}");
-        }
-        catch (InvalidFileExtensionException ex)
-        {
-            return BadRequest($"Extensão de arquivo inválida: {ex.Message}");
-        }
-        catch (FileSizeLimitExceededException ex)
-        {
-            return BadRequest($"Tamanho máximo do arquivo excedido: {ex.Message}");
-        }
-        catch (FileOverwriteNotAllowedException ex)
-        {
-            return BadRequest($"Não é permitido sobrescrever o arquivo: {ex.Message}");
-        }
-        catch (Exception ex)
-        {
-            return StatusCode(500, $"Ocorreu um erro ao processar o upload do arquivo: {ex.Message}");
-        }
-    }
+             return Ok($"File sent successfully! Path: {filePath}");
+         }
+         catch (InvalidFileExtensionException ex)
+         {
+             return BadRequest($"Invalid file extension: {ex.Message}");
+         }
+         catch (FileSizeLimitExceededException ex)
+         {
+             return BadRequest($"Maximum file size exceeded: {ex.Message}");
+         }
+         catch (FileOverwriteNotAllowedException ex)
+         {
+             return BadRequest($"Overwriting the file is not allowed: {ex.Message}");
+         }
+         catch (Exception ex)
+         {
+             return StatusCode(500, $"An error occurred while processing the file upload: {ex.Message}");
+         }
+     }
 }
 ```
 
