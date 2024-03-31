@@ -19,7 +19,7 @@ The FileUploadService is responsible for:
 
 In this documentation, you will find detailed information about the following components:
 
-- FileUploadOptions
+- [FileUploadOptions](file-upload-options.md)
 - FileUploadService
 - FileUploadServiceExtension
 - IFileUploadService
