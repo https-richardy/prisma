@@ -24,7 +24,7 @@ In this documentation, you will find detailed information about the following co
 - [FileUploadServiceExtension](file-upload-service-extension.md)
 - [IFileUploadService](file-upload-service-interface.md)
 - [FileOverwriteNotAllowedException](file-overwrite-not-allowed-exception.md)
-- FileSizeLimitExceededException
+- [FileSizeLimitExceededException](file-size-limit-exceeded-exception.md)
 - InvalidFileExtensionException
 
 Each component is explained in detail, including its functionality, methods, and important usage considerations.
