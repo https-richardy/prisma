@@ -24,3 +24,5 @@ nav:
     - IMinimalRepository Interface: references/minimal-repository-interface.md
     - IRepository Interface: references/repository-interface.md
     - FileUploadService: references/file-upload-service/index.md
+  - Examples:
+    - Index: examples/index.md
